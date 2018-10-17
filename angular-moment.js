@@ -12,7 +12,7 @@
 
 	function requireMoment() {
 		try {
-			return require('moment'); // Using nw.js or browserify?
+			return require('moment-timezone'); // Using nw.js or browserify?
 		} catch (e) {
 			throw new Error('Please install moment via npm. Please reference to: https://github.com/urish/angular-moment'); // Add wiki/troubleshooting section?
 		}
@@ -728,9 +728,9 @@
 
 	var isElectron = window && window.process && window.process.type;
 	if (typeof define === 'function' && define.amd) {
-		define(['angular', 'moment'], angularMoment);
+		define(['angular', 'moment-timezone'], angularMoment);
 	} else if (typeof module !== 'undefined' && module && module.exports && (typeof require === 'function') && !isElectron) {
-		module.exports = angularMoment(require('angular'), require('moment'));
+		module.exports = angularMoment(require('angular'), require('moment-timezone'));
 	} else {
 		angularMoment(angular, (typeof global !== 'undefined' && typeof global.moment !== 'undefined' ? global : window).moment);
 	}
